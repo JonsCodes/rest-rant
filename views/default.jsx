@@ -12,8 +12,7 @@ function Def(html) {
         />
       </head>
       <body>
-        {html.children}
-        <nav>
+      <nav>
           <ul>
             <li>
               <a href="/">Home</a>
@@ -26,7 +25,7 @@ function Def(html) {
             </li>
           </ul>
         </nav>
-
+        {html.children}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
       </body>
     </html>
