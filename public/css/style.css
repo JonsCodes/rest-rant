@@ -1,0 +1,114 @@
+@font-face {
+  font-family: 'neon';
+  src: url('/fonts/NEON.TTF');
+}
+
+@font-face {
+  font-family: 'moms-diner';
+  src: url('/fonts/MomsDiner.ttf');
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
+  }
+  to {
+    text-shadow: 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue, 0 0 80px blue;
+  }
+}
+
+h1 {
+  font-family: 'neon', sans-serif;
+  text-align: center;
+  color: blue;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+body {
+  font-family: 'moms-diner', sans-serif;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-repeat: none;
+  background-image: url("../images/background.jpg");
+  background-color: blue;
+  background-size: cover;
+}
+
+main {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+img:not(.bg) {
+  width: 35vw;
+  height: 35vh;
+  border: solid blue 5px;
+}
+
+.bg {
+  opacity: 0.7;
+  width: 80vw;
+  height: 50vh;
+  border: solid blue 5px;
+}
+
+a {
+  color: blue;
+}
+
+a:hover {
+  color: white;
+}
+
+.footer {
+  color: rgb(235, 225, 225);
+  background-color: black;
+  height: 12vh;
+  padding-block: 20px;
+  font-size: larger;
+  line-height: 22px;
+  margin-top: auto;
+  margin-bottom: 0px;
+}
+
+#linked:hover {
+  color: rgba(255, 255, 255, 0.397);
+}
+
+nav {
+  background-color: black;
+  padding: 12px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 8px;
+}
+
+nav li {
+  display: inline;
+  margin-right: 35px;
+}
+
+nav a {
+  color: blue;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.col-sm-6,
+.showPage {
+  background-color: rgba(0, 0, 0, 0.589);
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
