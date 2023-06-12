@@ -1,153 +1,102 @@
-const router = require('express').Router()
+const express = require('express')
+const router = express.Router()
+const places = require("../models/places")
+const comments = require("../models/comment")
 const db = require('../models')
 
-router.get('/', (req, res) => {
-  db.Place.find()
-  .then((places) => {
-    res.render('places/index', {places})
-  })
-  .catch(err => {
-    console.log(err)
-    res.render('error404')
-  })
+router.get('/', async (req, res, next) => {
+  try {
+    const places = await db.Place.find()
+    res.render('places/index', { places })
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.post('/', (req, res) => {
-  db.Place.create(req.body)
-  .then(() => {
+router.post('/', async (req, res, next) => {
+  try {
+    await db.Place.create(req.body)
     res.redirect('/places')
-  })
-  .catch(err => {
-    console.log('err', err)
-    res.render('error404')
-  })
+  } catch (err) {
+    if (err && err.name == 'ValidationError') {
+      let message = 'Validation Error: '
+      for (let field in err.errors) {
+        message += `${field} was ${err.errors[field].value}. `
+        message += `${err.errors[field].message}`
+      }
+      console.log('Validation error message', message)
+      res.render('places/new', { message })
+    } else {
+      next(err)
+    }
+  }
 })
 
 router.get('/new', (req, res) => {
   res.render('places/new')
 })
 
-router.get('/:id', (req, res) => {
-  res.send('GET /places/:id stub')
+router.get('/:id', async (req, res, next) => {
+  try {
+    const place = await db.Place.findById(req.params.id).populate('comments')
+    res.render('places/show', { place })
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.put('/:id', (req, res) => {
-  res.send('PUT /places/:id stub')
+router.post('/:id/comment', async (req, res, next) => {
+  try {
+    req.body.rant = req.body.rant ? true : false
+    const place = await db.Place.findById(req.params.id)
+    const comment = await db.Comment.create(req.body)
+    place.comments.push(comment.id)
+    await place.save()
+    res.redirect(`/places/${req.params.id}`)
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.delete('/:id', (req, res) => {
-  res.send('DELETE /places/:id stub')
+router.put('/:id', async (req, res, next) => {
+  try {
+    await db.Place.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect(`/places/${req.params.id}`)
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.get('/:id/edit', (req, res) => {
-  res.send('GET edit form stub')
+router.delete('/:id', async (req, res, next) => {
+  try {
+    await db.Place.findByIdAndDelete(req.params.id)
+    res.redirect('/places')
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.post('/:id/rant', (req, res) => {
-  res.send('GET /places/:id/rant stub')
+router.get('/:id/edit', async (req, res, next) => {
+  try {
+    const place = await db.Place.findById(req.params.id)
+    res.render('places/edit', { place })
+  } catch (err) {
+    next(err)
+  }
 })
 
-router.delete('/:id/rant/:rantId', (req, res) => {
-    res.send('GET /places/:id/rant/:rantId stub')
+router.delete('/:id/comment/:commentId', async (req, res, next) => {
+  try {
+    await db.Comment.findByIdAndDelete(req.params.commentId)
+    res.redirect(`/places/${req.params.id}`)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).render('error404')
 })
 
 module.exports = router
-
-
-
-// const router = require('express').Router()
-// const places = require('../models/places.js')
-
-// //index
-// router.get('/', (req, res) => {
-//     res.render('places/index', {places})
-// })
-// //new
-// router.get("/new", (req, res) => {
-//   res.render("places/new");
-// })
-
-// //post
-// router.post('/', (req, res) => {
-//   if (!req.body.pic) {
-//     req.body.pic = 'http://placekitten.com/400/400'
-//   }
-//   if (!req.body.city){
-//     req.body.city = "Anytown"
-//   }
-//   if (!req.body.state) {
-//     req.body.state = "USA"
-//   }
-//   places.push(req.body)
-//   res.redirect('/places')
-// })
-
-// //Click link/EDIT
-// router.get('/:id/edit', (req, res) => {
-//   let id = Number(req.params.id)
-//   if (isNaN(id)) {
-//       res.render('error404')
-//   }
-//   else if (!places[id]) {
-//       res.render('error404')
-//   }
-//   else {
-//     res.render('places/edit', {place: places[id], id})
-//   }
-// })
-
-// //Show/ID/Edit button
-// router.put('/:id', (req, res)=>{
-//   let id = Number(req.params.id)
-//   if (isNaN(id)) {
-//     res.render('error404')
-//   }
-//   else if (!places[id]) {
-//     res.render('error404')
-//   }
-//   else {
-//     if (!req.body.pic) {
-//       req.body.pic = 'http://placekitten.com/400/400'
-//     }
-//     if (!req.body.city){
-//       req.body.city = 'Anytown'
-//     }
-//     if (!req.body.state) {
-//       req.body.state = 'USA'
-//     }
-//     places[id] = req.body
-//   res.redirect(`/places/${id}`)
-//   }
-// })
-
-// //Show
-// router.get('/:id', (req, res) => {
-//   let id = Number(req.params.id)
-//   if (isNaN(id)) {
-//     res.render('error404')
-//   }
-//   else if (!places[id]) {
-//     res.render('error404')
-//   }
-//   else {
-//     res.render('places/show', { place: places[id], id })
-//   }
-// })
-
-
-// //Delete
-// router.delete('/:id', (req, res) => {
-//   let id = Number(req.params.id)
-//   if (isNaN(id)) {
-//     res.render('error404')
-//   }
-//   else if (!places[id]) {
-//     res.render('error404')
-//   }
-//   else {
-//     places.splice(id, 1)
-//   res.redirect('/places')
-//   }
-// })
-
-// module.exports = router

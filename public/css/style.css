@@ -10,20 +10,20 @@
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 0, 0, 0.8);
   }
   to {
-    text-shadow: 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue, 0 0 80px blue;
+    text-shadow: 0 0 20px rgb(202, 202, 205), 0 0 30px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 0, 0, 0.8), 0 0 80px rgba(0, 0, 0, 0.8);
   }
 }
 
 h1 {
   font-family: 'neon', sans-serif;
   text-align: center;
-  color: blue;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  color: black;
+  /* -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate; */
 }
 
 body {
@@ -47,14 +47,14 @@ main {
 img:not(.bg) {
   width: 35vw;
   height: 35vh;
-  border: solid blue 5px;
+  border: solid black 2.5px;
 }
 
 .bg {
   opacity: 0.7;
-  width: 80vw;
+  width: 50vw;
   height: 50vh;
-  border: solid blue 5px;
+  border: solid black 2.5px;
 }
 
 a {
@@ -68,9 +68,9 @@ a:hover {
 .footer {
   color: rgb(235, 225, 225);
   background-color: black;
-  height: 12vh;
-  padding-block: 20px;
-  font-size: larger;
+  height: fit-content;
+  /* padding-block: 20px; */
+  font-size: 10px;
   line-height: 22px;
   margin-top: auto;
   margin-bottom: 0px;
@@ -96,7 +96,7 @@ nav li {
 }
 
 nav a {
-  color: blue;
+  color: gray;
   font-size: 1.5em;
   text-decoration: none;
 }
