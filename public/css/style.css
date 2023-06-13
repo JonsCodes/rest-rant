@@ -1,24 +1,24 @@
 @font-face {
-  font-family: 'neon';
-  src: url('/fonts/NEON.TTF');
+  font-family: 'cursiv';
+  src: url('/fonts/GCursiv2.ttf');
 }
 
 @font-face {
-  font-family: 'moms-diner';
-  src: url('/fonts/MomsDiner.ttf');
+  font-family: 'cursive';
+  src: url('/fonts/GCursive.ttf');
 }
 
-@keyframes glow {
+/* @keyframes glow {
   from {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 0, 0, 0.8);
   }
   to {
     text-shadow: 0 0 20px rgb(202, 202, 205), 0 0 30px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 0, 0, 0.8), 0 0 80px rgba(0, 0, 0, 0.8);
   }
-}
+} */
 
 h1 {
-  font-family: 'neon', sans-serif;
+  font-family: 'cursiv', sans-serif;
   text-align: center;
   color: black;
   /* -webkit-animation: glow 1s ease-in-out infinite alternate;
@@ -27,7 +27,7 @@ h1 {
 }
 
 body {
-  font-family: 'moms-diner', sans-serif;
+  font-family: 'cursiv', sans-serif;
   color: white;
   text-align: center;
   min-height: 100vh;
@@ -58,7 +58,7 @@ img:not(.bg) {
 }
 
 a {
-  color: blue;
+  color: gray;
 }
 
 a:hover {
@@ -96,8 +96,9 @@ nav li {
 }
 
 nav a {
+  font-family: 'cursive', sans-serif;
   color: gray;
-  font-size: 1.5em;
+  font-size: 2em;
   text-decoration: none;
 }
 

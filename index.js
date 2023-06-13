@@ -19,9 +19,6 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
-// app.get('/', (req, res) => {
-//     res.send('hello')
-// })
 const port = process.env.PORT || 5000
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true},
   () => {console.log('connected to : ', process.env.MONGO_URI)})

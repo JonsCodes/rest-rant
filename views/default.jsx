@@ -44,7 +44,7 @@ function Def(html) {
       <footer className="footer">
         Site Created By JonsCodes @{" "}
         <a href="https://www.linkedin.com/in/jonathanalyashai/" id="linked">
-          LinkedIN
+          LinkedIn
         </a>{" "}
         &{" "}
         <a href="https://github.com/JonsCodes" id="linked">
@@ -60,19 +60,10 @@ function Def(html) {
           Unsplash
         </a>
         <br></br>
-        Neon font by{" "}
-        <a href="https://www.dafont.com/neon.font" id="linked">
+        Cursive Font by{" "}
+        <a href="https://www.dafont.com/gourdie-cursive.font" id="linked">
           {" "}
-          Fenotype @ Dafont{" "}
-        </a>
-        <br></br>
-        Diner Font by{" "}
-        <a
-          href="https://www.dafont.com/momsdiner.font?text=resturant"
-          id="linked"
-        >
-          {" "}
-          Moms Diner by Jake Luedecke @ Dafont{" "}
+          Mouser Fonts @ Dafont{" "}
         </a>
       </footer>
     </html>
