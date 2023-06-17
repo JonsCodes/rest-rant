@@ -1,18 +1,9 @@
-const http = require('http')
-
-function createServer() {
-  return http.createServer((req, res) => {
-    res.setHeader('Content-Type', 'text/html');
+let http = require('http')
+let server = http.createServer((req,res)=>{
     res.write("<h1 style='color:red'>Hello Programmers!!!!!!!</h1>")
     res.end()
-  })
-}
+})
 
-function startServer(server) {
-  server.listen(process.env.PORT || 3000, () => {
-    console.log('Server is running!!')
-  })
-}
-
-const server = createServer()
-startServer(server)
+server.listen(3000, ()=>{
+ console.log('Server is running!!')
+})
