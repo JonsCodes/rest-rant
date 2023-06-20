@@ -76,43 +76,51 @@ function edit_form(data) {
               <input className="form-control" id="pic" name="pic" />
             </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="city">City</label>
-            <input className="form-control" id="city" name="city" />
+          <div className="row">
+            <div className="form-group col-sm-6">
+              <label htmlFor="city">City</label>
+              <input className="form-control" id="city" name="city" />
+            </div>
+            <div className="form-group col-sm-6">
+              <label htmlFor="state">State</label>
+              <select className="form-control" id="state" name="state">
+                {states.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="state">State</label>
-            <select className="form-control" id="state" name="state">
-              {states.map((state) => (
-                <option key={state} value={state}>
-                  {state}
-                </option>
-              ))}
-            </select>
+          <div className="row">
+            <div className="form-group col-sm-6">
+              <label htmlFor="cuisines">Cuisines</label>
+              <input
+                className="form-control"
+                id="cuisines"
+                name="cuisines"
+                required
+              />
+            </div>
+            <div className="form-group col-sm-6">
+              <label htmlFor="founded">Founded</label>
+              <input
+                className="form-control col-sm-6"
+                id="founded"
+                name="founded"
+                value={data.place.founded}
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="cuisines">Cuisines</label>
-            <input
-              className="form-control"
-              id="cuisines"
-              name="cuisines"
-              required
-            />
+          <div className="row">
+            <div className="col-sm-12">
+              <input
+                className="btn btn-primary"
+                type="submit"
+                value="Submit Changes"
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="founded">Founded</label>
-            <input
-              className="form-control"
-              id="founded"
-              name="founded"
-              value={data.place.founded}
-            />
-          </div>
-          <input
-            className="btn btn-primary"
-            type="submit"
-            value="Submit Changes"
-          />
         </form>
       </main>
     </Def>
