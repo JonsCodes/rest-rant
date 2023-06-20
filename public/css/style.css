@@ -8,7 +8,6 @@
   src: url('/fonts/GCursive.ttf');
 }
 
-
 h1 {
   font-family: 'cursiv', sans-serif;
   text-align: center;
@@ -97,6 +96,8 @@ nav a:hover {
 }
 
 .col-sm-6,
+.col-sm-4,
+.col-sm-2,
 .showPage {
   color:aliceblue;
   background-color: rgba(60, 59, 59, 0.589);
